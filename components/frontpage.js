@@ -105,7 +105,7 @@ export default class Frontpage extends Component {
 
     
     setTimeout(() => {
-      this.props.history.push("/thegame");
+      this.props.history.push("/thegame?"+e);
     }, 1600);
    }
 
@@ -128,7 +128,7 @@ render () {
     <Text style={styles.welcome}>Instructions</Text>
 
     <Text style={styles.text}>Try to find matching sounds on every level.</Text>
-    <Text style={styles.text}>Swipe right to quit the level.</Text>
+    <Text style={styles.text}>Swipe left to quit the level.</Text>
     <Text style={styles.text}>And most importantly, relax!</Text>
 
     <TouchableOpacity ref="button"  onPress={() => this.instructions("off")} style={styles.okbutton} >
@@ -162,21 +162,21 @@ render () {
     <TouchableWithoutFeedback onPress={() => this.level(2)} >
           <Animatable.View duration={800} ref="level2" style={[styles.level]}>
           <Text style={styles.leveltext1}>Level 2</Text>
-          <Text style={styles.leveltext2}>Scratching Sounds</Text>
+          <Text style={styles.leveltext2}>Scratching and Tapping</Text>
           </Animatable.View>
     </TouchableWithoutFeedback>
 
     <TouchableWithoutFeedback onPress={() => this.level(3)} >
           <Animatable.View duration={800} ref="level3" style={[styles.level]}>
           <Text style={styles.leveltext1}>Level 3</Text>
-          <Text style={styles.leveltext2}>Words</Text>
+          <Text style={styles.leveltext2}>Water Sounds</Text>
           </Animatable.View>
     </TouchableWithoutFeedback>
 
     <TouchableWithoutFeedback onPress={() => this.level(4)} >
           <Animatable.View duration={800} ref="level4" style={[styles.level]}>
           <Text style={styles.leveltext1}>Level 4</Text>
-          <Text style={styles.leveltext2}>Eating Sounds</Text>
+          <Text style={styles.leveltext2}>Random sounds 2</Text>
           </Animatable.View>
     </TouchableWithoutFeedback>
 

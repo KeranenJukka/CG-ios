@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, View } from 'react-native';
+import { StyleSheet, Image, View, StatusBar } from 'react-native';
 
 import { NativeRouter, Route } from "react-router-native";
 
@@ -17,6 +17,8 @@ render() {
   return (
     <NativeRouter>
     
+    <StatusBar barStyle="light-content" />
+
     <View style={styles.background}>
       <Image style={styles.backgroundimage} source={sky}></Image>
     </View>

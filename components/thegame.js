@@ -14,9 +14,10 @@ import { AdMobBanner } from 'expo-ads-admob';
 import GestureRecognizer from 'react-native-swipe-gestures';
 
 
+
+
 var a0 = new Audio.Sound(), a1 = new Audio.Sound(), a2 = new Audio.Sound(), a3 = new Audio.Sound(), a4 = new Audio.Sound(), a5 = new Audio.Sound(), a6 = new Audio.Sound(), a7 = new Audio.Sound(), a8 = new Audio.Sound(), a9 = new Audio.Sound(), a10 = new Audio.Sound(), a11 = new Audio.Sound();
 
-var a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11;
 
 var soundBank = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11];
 
@@ -84,6 +85,17 @@ export default class TheGame extends Component {
 
   
   okButton = () => {
+
+    if (this.state.last.length !== 0) {
+    
+      var temp = this.state.last[1];
+  
+      soundBank[temp].stopAsync().catch(error => {
+        
+      })
+  
+    }
+
     this.props.history.push("/frontpage");
   }
 
@@ -289,19 +301,70 @@ export default class TheGame extends Component {
 
     /*------------------------------------------------------------------------*/
     
+    if (this.props.location.search === "?1") {
+
+      await a0.loadAsync(require('../assets/bank1/1.mp3'));
+      await a1.loadAsync(require('../assets/bank1/2.mp3'));
+      await a2.loadAsync(require('../assets/bank1/3.mp3'));
+      await a3.loadAsync(require('../assets/bank1/4.mp3'));
+      await a4.loadAsync(require('../assets/bank1/5.mp3'));
+      await a5.loadAsync(require('../assets/bank1/6.mp3'));
+      await a6.loadAsync(require('../assets/bank1/7.mp3'));
+      await a7.loadAsync(require('../assets/bank1/8.mp3'));
+      await a8.loadAsync(require('../assets/bank1/9.mp3'));
+      await a9.loadAsync(require('../assets/bank1/10.mp3'));
+      await a10.loadAsync(require('../assets/bank1/11.mp3'));
+      await a11.loadAsync(require('../assets/bank1/12.mp3'));
+
+    }
+
+    else if (this.props.location.search === "?2") {
+      await a0.loadAsync(require('../assets/bank2/1.mp3'));
+      await a1.loadAsync(require('../assets/bank2/2.mp3'));
+      await a2.loadAsync(require('../assets/bank2/3.mp3'));
+      await a3.loadAsync(require('../assets/bank2/4.mp3'));
+      await a4.loadAsync(require('../assets/bank2/5.mp3'));
+      await a5.loadAsync(require('../assets/bank2/6.mp3'));
+      await a6.loadAsync(require('../assets/bank2/7.mp3'));
+      await a7.loadAsync(require('../assets/bank2/8.mp3'));
+      await a8.loadAsync(require('../assets/bank2/9.mp3'));
+      await a9.loadAsync(require('../assets/bank2/10.mp3'));
+      await a10.loadAsync(require('../assets/bank2/11.mp3'));
+      await a11.loadAsync(require('../assets/bank2/12.mp3'));
+    }
+
+    else if (this.props.location.search === "?3") {
+      await a0.loadAsync(require('../assets/bank3/1.mp3'));
+      await a1.loadAsync(require('../assets/bank3/2.mp3'));
+      await a2.loadAsync(require('../assets/bank3/3.mp3'));
+      await a3.loadAsync(require('../assets/bank3/4.mp3'));
+      await a4.loadAsync(require('../assets/bank3/5.mp3'));
+      await a5.loadAsync(require('../assets/bank3/6.mp3'));
+      await a6.loadAsync(require('../assets/bank3/7.mp3'));
+      await a7.loadAsync(require('../assets/bank3/8.mp3'));
+      await a8.loadAsync(require('../assets/bank3/9.mp3'));
+      await a9.loadAsync(require('../assets/bank3/10.mp3'));
+      await a10.loadAsync(require('../assets/bank3/11.mp3'));
+      await a11.loadAsync(require('../assets/bank3/12.mp3'));
+    }
+
+    else if (this.props.location.search === "?4") {
+      await a0.loadAsync(require('../assets/bank4/1.mp3'));
+      await a1.loadAsync(require('../assets/bank4/2.mp3'));
+      await a2.loadAsync(require('../assets/bank4/3.mp3'));
+      await a3.loadAsync(require('../assets/bank4/4.mp3'));
+      await a4.loadAsync(require('../assets/bank4/5.mp3'));
+      await a5.loadAsync(require('../assets/bank4/6.mp3'));
+      await a6.loadAsync(require('../assets/bank4/7.mp3'));
+      await a7.loadAsync(require('../assets/bank4/8.mp3'));
+      await a8.loadAsync(require('../assets/bank4/9.mp3'));
+      await a9.loadAsync(require('../assets/bank4/10.mp3'));
+      await a10.loadAsync(require('../assets/bank4/11.mp3'));
+      await a11.loadAsync(require('../assets/bank4/12.mp3'));
+    }
      
-    await a0.loadAsync(require('../assets/bank1/1.mp3'));
-    await a1.loadAsync(require('../assets/bank1/2.mp3'));
-    await a2.loadAsync(require('../assets/bank1/3.mp3'));
-    await a3.loadAsync(require('../assets/bank1/4.mp3'));
-    await a4.loadAsync(require('../assets/bank1/5.mp3'));
-    await a5.loadAsync(require('../assets/bank1/6.mp3'));
-    await a6.loadAsync(require('../assets/bank1/7.mp3'));
-    await a7.loadAsync(require('../assets/bank1/8.mp3'));
-    await a8.loadAsync(require('../assets/bank1/9.mp3'));
-    await a9.loadAsync(require('../assets/bank1/10.mp3'));
-    await a10.loadAsync(require('../assets/bank1/11.mp3'));
-    await a11.loadAsync(require('../assets/bank1/12.mp3'));
+
+  /*------------------------------------------------------------------------*/
 
     
   var loading = this.refs.loadingscreen2;
@@ -325,11 +388,12 @@ export default class TheGame extends Component {
    
    componentWillUnmount () {
 
-     a0 = undefined; a1 = undefined; a2 = undefined; a3 = undefined; a4 = undefined; a5 = undefined; a6 = undefined; a7 = undefined; a8 = undefined; a9 = undefined; a10 = undefined; a11 = undefined;
-     
+    
      a0 = new Audio.Sound(); a1 = new Audio.Sound(); a2 = new Audio.Sound(); a3 = new Audio.Sound(); a4 = new Audio.Sound(); a5 = new Audio.Sound(); a6 = new Audio.Sound(); a7 = new Audio.Sound(); a8 = new Audio.Sound(); a9 = new Audio.Sound(); a10 = new Audio.Sound(); a11 = new Audio.Sound();
 
+     soundBank = [a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11];
 
+    
    }
 
 
@@ -564,7 +628,7 @@ const styles = StyleSheet.create({
  
   container: {
     position: "relative",
-    paddingTop: 20,
+    paddingTop: 30,
     paddingBottom: 20,
     paddingLeft: "2%",
     paddingRight: "2%",
