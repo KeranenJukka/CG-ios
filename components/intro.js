@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
 
@@ -36,8 +36,15 @@ export default class Intro extends Component {
 okButton = () => {
   
   var container = this.refs.container;
+  var button = this.refs.button;
 
-  container.animate(animLeft)
+  button.animate("bounceIn");
+
+  setTimeout(() => {
+    container.animate(animLeft)
+  }, 800);
+
+  
 
 }
 
@@ -67,7 +74,7 @@ okButton = () => {
 
     {this.state.fontLoaded ? (
 
-    <Animatable.View animation="zoomInUp">
+    <Animatable.View duration={800} animation="fadeIn">
       
       <Text style={styles.welcome}>Welcome!</Text>
       
@@ -83,9 +90,11 @@ okButton = () => {
 
      {this.state.fontLoaded ? (
 
-      <TouchableOpacity ref="button"  onPress={this.okButton} style={styles.okbutton} >
+      <TouchableWithoutFeedback onPress={this.okButton}>
+      <Animatable.View animation="fadeIn" ref="button" duration={800} style={styles.okbutton} >
       <Text style={styles.okbutton2}>OK</Text>
-      </TouchableOpacity>
+      </Animatable.View>
+      </TouchableWithoutFeedback>
 
       ) : null}
 

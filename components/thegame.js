@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableWithoutFeedback, Image } from 'react-native';
 
 import * as Animatable from 'react-native-animatable';
 
 import * as Font from 'expo-font';
 
-import moon from '../assets/pictures/moon.png'
+import moon from '../assets/pictures/moon4.png'
 
 import { Audio } from 'expo-av';
 
 import { AdMobBanner } from 'expo-ads-admob';
 
 import GestureRecognizer from 'react-native-swipe-gestures';
-
 
 
 
@@ -43,6 +42,17 @@ export default class TheGame extends Component {
 
   }
 
+
+
+  bannerError = (e) => {
+    console.log(e)
+  }
+
+  receivedAd = (e) => {
+    
+  }
+
+
   onSwipeLeft = (e) => {
 
     var quit = this.refs.quitscreen; 
@@ -65,6 +75,9 @@ export default class TheGame extends Component {
 
     else if (e === "off") {
 
+      var but = this.refs.buttonno;
+      but.animate("bounceIn")
+
       var right = {
         from: {
           right: 0+"%",
@@ -74,7 +87,10 @@ export default class TheGame extends Component {
         },
       };
   
-      quit.animate(right);
+      setTimeout(() => {
+        quit.animate(right);
+      }, 800);
+      
 
     }
 
@@ -86,17 +102,30 @@ export default class TheGame extends Component {
   
   okButton = () => {
 
-    if (this.state.last.length !== 0) {
-    
-      var temp = this.state.last[1];
-  
-      soundBank[temp].stopAsync().catch(error => {
-        
-      })
-  
-    }
+    var but = this.refs.buttonyes;
+    var but2 = this.refs.buttonok;
 
-    this.props.history.push("/frontpage");
+
+    but.animate("bounceIn");
+    but2.animate("bounceIn")
+
+    setTimeout(() => {
+      
+      if (this.state.last.length !== 0) {
+    
+        var temp = this.state.last[1];
+    
+        soundBank[temp].stopAsync().catch(error => {
+          
+        })
+    
+      }
+  
+      this.props.history.push("/frontpage");
+
+    }, 800);
+
+
   }
 
 
@@ -119,8 +148,7 @@ export default class TheGame extends Component {
 
   playSound = (x) => {
 
-  
- 
+   
   if (this.state.last.length !== 0) {
     
     var temp = this.state.last[1];
@@ -288,8 +316,8 @@ export default class TheGame extends Component {
 
 }
   async componentDidMount() {
-
-
+    
+    
     await Font.loadAsync({
       'Mansalva': require('../assets/fonts/Mansalva-Regular.ttf'),
       'Archivo': require('../assets/fonts/Archivo-Regular.ttf'),
@@ -361,6 +389,21 @@ export default class TheGame extends Component {
       await a9.loadAsync(require('../assets/bank4/10.mp3'));
       await a10.loadAsync(require('../assets/bank4/11.mp3'));
       await a11.loadAsync(require('../assets/bank4/12.mp3'));
+    }
+
+    else if (this.props.location.search === "?5") {
+      await a0.loadAsync(require('../assets/bank5/1.mp3'));
+      await a1.loadAsync(require('../assets/bank5/2.mp3'));
+      await a2.loadAsync(require('../assets/bank5/3.mp3'));
+      await a3.loadAsync(require('../assets/bank5/4.mp3'));
+      await a4.loadAsync(require('../assets/bank5/5.mp3'));
+      await a5.loadAsync(require('../assets/bank5/6.mp3'));
+      await a6.loadAsync(require('../assets/bank5/7.mp3'));
+      await a7.loadAsync(require('../assets/bank5/8.mp3'));
+      await a8.loadAsync(require('../assets/bank5/9.mp3'));
+      await a9.loadAsync(require('../assets/bank5/10.mp3'));
+      await a10.loadAsync(require('../assets/bank5/11.mp3'));
+      await a11.loadAsync(require('../assets/bank5/12.mp3'));
     }
      
 
@@ -537,9 +580,12 @@ render () {
 
  {this.state.fontLoaded ? (
 
-  <TouchableOpacity ref="button"  onPress={this.okButton} style={styles.okbutton} >
-  <Text style={styles.okbutton2}>OK</Text>
-  </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={this.okButton}>
+      <Animatable.View ref="buttonok" duration={800} style={styles.okbutton} >
+      <Text style={styles.okbutton2}>OK</Text>
+      </Animatable.View>
+      </TouchableWithoutFeedback>
+
 
   ) : null}
 
@@ -564,13 +610,20 @@ render () {
  {this.state.fontLoaded ? (
 
   <View style={styles.quitbuttons}>
-  <TouchableOpacity ref="button"  onPress={this.okButton} style={styles.okbutton} >
-  <Text style={styles.okbutton2}>YES</Text>
-  </TouchableOpacity>
 
-  <TouchableOpacity ref="button"  onPress={() => this.onSwipeLeft("off")} style={styles.okbutton} >
-  <Text style={styles.okbutton2}>NO</Text>
-  </TouchableOpacity>
+      <TouchableWithoutFeedback onPress={this.okButton}>
+      <Animatable.View ref="buttonyes" duration={800} style={styles.okbutton} >
+      <Text style={styles.okbutton2}>YES</Text>
+      </Animatable.View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={() => this.onSwipeLeft("off")}>
+      <Animatable.View ref="buttonno" duration={800} style={styles.okbutton} >
+      <Text style={styles.okbutton2}>NO</Text>
+      </Animatable.View>
+      </TouchableWithoutFeedback>
+
+
   </View>
   ) : null}
 
@@ -582,10 +635,12 @@ render () {
     <View style={styles.bannercont}>
     <AdMobBanner style={styles.banner}
     bannerSize="banner"
-    adUnitID="ca-app-pub-3940256099942544/2934735716" // Test ID, Replace with your-admob-unit-id
+    adUnitID="ca-app-pub-3940256099942544/2934735716" 
     testDeviceID="EMULATOR"
-    servePersonalizedAds // true or false
-    onDidFailToReceiveAdWithError={this.bannerError} />
+    servePersonalizedAds={false}
+    onAdViewDidReceiveAd={(e) => this.receivedAd(e)}
+    onDidFailToReceiveAdWithError={(e) => this.bannerError(e)} />
+    
     </View>
 
 {/*-----------------------------------------------------------------------------------*/}
@@ -771,7 +826,8 @@ const styles = StyleSheet.create({
 
   banner: {
     alignSelf: "center",
-    
+    width: 320,
+    height: 50
   }
 
 });

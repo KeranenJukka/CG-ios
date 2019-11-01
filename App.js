@@ -30,7 +30,7 @@ render() {
     <Route path="/frontpage" component={Frontpage} />
 
     <Route path="/thegame" component={TheGame} />
-
+    
     </NativeRouter>
   );
 }
@@ -38,6 +38,7 @@ render() {
 }
 
 const styles = StyleSheet.create({
+
 
   background: {
     width: "100%",

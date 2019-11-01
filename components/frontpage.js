@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableWithoutFeedback, TouchableOpacity, Linking} from 'react-native';
 
 
 import * as Font from 'expo-font';
@@ -35,6 +35,57 @@ export default class Frontpage extends Component {
      
    }
 
+
+
+   info = (e) => {
+
+    var button = this.refs.info;
+    var screen = this.refs.infoscreen;
+    button.animate("bounceIn")
+
+    if (e === "on") {
+
+    var right = {
+        from: {
+          right: -100+"%",
+        },
+        to: {
+          right: 0+"%",
+        },
+      };
+
+      setTimeout(() => {
+        screen.animate(right);
+      }, 800);
+
+    }
+
+    else if (e === "off") {
+
+      var but = this.refs.infobutton;
+
+      but.animate("bounceIn");
+
+      var left = {
+        from: {
+          right: 0+"%",
+        },
+        to: {
+          right: -100+"%",
+        },
+      };
+
+     setTimeout(() => {
+      screen.animate(left);
+     }, 800);
+
+    
+      
+
+    }
+
+   }
+
    instructions  = (e) => {
       
       var button = this.refs.instructions;
@@ -62,6 +113,10 @@ export default class Frontpage extends Component {
 
       else if (e === "off") {
 
+        var but = this.refs.instructionsbutton;
+
+        but.animate("bounceIn");
+
         var left = {
           from: {
             right: 0+"%",
@@ -71,8 +126,11 @@ export default class Frontpage extends Component {
           },
         };
 
-       
-         screen.animate(left);
+       setTimeout(() => {
+        screen.animate(left);
+       }, 800);
+
+      
         
 
       }
@@ -131,13 +189,37 @@ render () {
     <Text style={styles.text}>Swipe left to quit the level.</Text>
     <Text style={styles.text}>And most importantly, relax!</Text>
 
-    <TouchableOpacity ref="button"  onPress={() => this.instructions("off")} style={styles.okbutton} >
+    <TouchableWithoutFeedback onPress={() => this.instructions("off")}>
+    <Animatable.View duration={800} ref="instructionsbutton" style={styles.okbutton} >
       <Text style={styles.okbutton2}>OK</Text>
-    </TouchableOpacity>
+    </Animatable.View>
+    </TouchableWithoutFeedback>
  
     </Animatable.View>
     ) : null}
-      
+
+    {this.state.fontLoaded ? (
+    <Animatable.View duration={800} ref= "infoscreen" style={styles.infoscreen}>
+    <Text style={styles.welcome}>Information</Text>
+
+    <Text style={styles.text}>App version: 1.0.0</Text>
+    <Text style={styles.text}>Contact:</Text>
+    <Text style={styles.text}>stable.software.solutions@gmail.com</Text>
+    <TouchableOpacity onPress={() => Linking.openURL('https://stablesoftwaresolutions.github.io/asmr-memory-game/')}>
+    <Text style={styles.linktext}>https://stablesoftwaresolutions.github.io/asmr-memory-game/</Text>
+    </TouchableOpacity>
+
+    <TouchableWithoutFeedback onPress={() => this.info("off")}>
+    <Animatable.View duration={800} ref="infobutton" style={styles.okbutton} >
+      <Text style={styles.okbutton2}>OK</Text>
+    </Animatable.View>
+    </TouchableWithoutFeedback>
+ 
+    </Animatable.View>
+    ) : null}
+
+
+
     {this.state.fontLoaded ? (
     <ScrollView style={styles.container2}>
 
@@ -183,10 +265,18 @@ render () {
     <TouchableWithoutFeedback onPress={() => this.level(5)} >
           <Animatable.View duration={800} ref="level5" style={[styles.level]}>
           <Text style={styles.leveltext1}>Level 5</Text>
-          <Text style={styles.leveltext2}>Object Sounds</Text>
+          <Text style={styles.leveltext2}>Words</Text>
           </Animatable.View>
     </TouchableWithoutFeedback>
     
+
+    <TouchableWithoutFeedback onPress={() => this.info("on")}>
+          <Animatable.View duration={800} ref="info" style={[styles.level]}>
+          <Text style={styles.leveltext1}>App Info</Text>
+          
+          </Animatable.View>
+    </TouchableWithoutFeedback>
+
  
     </View>
     
@@ -243,6 +333,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#181726',
   },
 
+  infoscreen: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    zIndex: 100,
+    width: '100%',
+    height: '100%',
+    top: 0,
+    right: -100+"%",
+    backgroundColor: '#181726',
+  },
+
   welcome: {
     color: '#abe1fa',
     fontSize: 35,
@@ -255,6 +358,15 @@ const styles = StyleSheet.create({
   text: {
     color: '#abe1fa',
     fontSize: 16,
+    textAlign: 'center',
+    paddingBottom: 15,
+    fontFamily: 'Archivo',
+    lineHeight: 20
+  },
+
+  linktext: {
+    color: '#ed6062',
+    fontSize: 17,
     textAlign: 'center',
     paddingBottom: 15,
     fontFamily: 'Archivo',
