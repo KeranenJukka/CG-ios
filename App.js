@@ -16,7 +16,8 @@ render() {
 
   return (
     <NativeRouter>
-    
+    <View style={styles.cont}>
+
     <StatusBar barStyle="light-content" />
 
     <View style={styles.background}>
@@ -30,7 +31,8 @@ render() {
     <Route path="/frontpage" component={Frontpage} />
 
     <Route path="/thegame" component={TheGame} />
-    
+
+    </View>
     </NativeRouter>
   );
 }
@@ -39,6 +41,10 @@ render() {
 
 const styles = StyleSheet.create({
 
+  cont: {
+    height: 896,
+    width: 414,
+  },
 
   background: {
     width: "100%",

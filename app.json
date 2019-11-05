@@ -1,12 +1,11 @@
 {
   "expo": {
     "name": "ASMR Memory Game",
-    "slug": "app",
+    "slug": "asmr-memory-game",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
-      "ios",
-      "android",
+      "ios"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,24 +17,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
 
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.sssolutions.asmrmemorygame",
       "config": {
-          "googleMobileAdsAppId": "ca-app-pub-3940256099942544/2934735716"
+          "googleMobileAdsAppId": "ca-app-pub-3052297965334900~4573933979"
       }
     },
-    "android": {
-      
-      "config": {
-        
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544/2934735716"
-      }
-    },
-    
+   
     "description": "Relaxing memory game with ASMR sounds."
   }
 }

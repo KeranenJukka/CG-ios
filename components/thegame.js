@@ -45,7 +45,7 @@ export default class TheGame extends Component {
 
 
   bannerError = (e) => {
-    console.log(e)
+    
   }
 
   receivedAd = (e) => {
@@ -148,7 +148,7 @@ export default class TheGame extends Component {
 
   playSound = (x) => {
 
-   
+
   if (this.state.last.length !== 0) {
     
     var temp = this.state.last[1];
@@ -317,7 +317,10 @@ export default class TheGame extends Component {
 }
   async componentDidMount() {
     
-    
+
+ 
+
+
     await Font.loadAsync({
       'Mansalva': require('../assets/fonts/Mansalva-Regular.ttf'),
       'Archivo': require('../assets/fonts/Archivo-Regular.ttf'),
@@ -407,6 +410,7 @@ export default class TheGame extends Component {
     }
      
 
+
   /*------------------------------------------------------------------------*/
 
     
@@ -422,6 +426,7 @@ export default class TheGame extends Component {
     };
 
    loading.animate(height);
+
 
 
 
@@ -637,6 +642,9 @@ render () {
     bannerSize="banner"
     adUnitID="ca-app-pub-3940256099942544/2934735716" 
     testDeviceID="EMULATOR"
+  //testDeviceID="8FA48CF3-6619-4304-AF22-CD6F4FFE6E0B"
+  //  testDeviceID="8fa48cf366194304af22cd6f4ffe6e0b"
+
     servePersonalizedAds={false}
     onAdViewDidReceiveAd={(e) => this.receivedAd(e)}
     onDidFailToReceiveAdWithError={(e) => this.bannerError(e)} />

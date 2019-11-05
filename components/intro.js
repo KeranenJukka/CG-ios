@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import * as Font from 'expo-font';
 
 
+
 const animLeft = {
   from: {
     left: 0+"%",
@@ -62,6 +63,8 @@ okButton = () => {
       fontLoaded: true
     })
     
+
+
   }
 
   render() {
