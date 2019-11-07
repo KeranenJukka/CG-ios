@@ -19,6 +19,9 @@ export default class Frontpage extends Component {
       
     }
 
+    this.working = "no"
+    this.working2 = "no";
+
   }
 
 
@@ -39,11 +42,18 @@ export default class Frontpage extends Component {
 
    info = (e) => {
 
+    
+
     var button = this.refs.info;
     var screen = this.refs.infoscreen;
-    button.animate("bounceIn")
+    
 
     if (e === "on") {
+
+    if (this.working === "on") {return null}
+    this.working = "on";
+
+    button.animate("bounceIn")
 
     var right = {
         from: {
@@ -56,11 +66,13 @@ export default class Frontpage extends Component {
 
       setTimeout(() => {
         screen.animate(right);
-      }, 800);
+      }, 650);
 
     }
 
     else if (e === "off") {
+
+      this.working = "off";
 
       var but = this.refs.infobutton;
 
@@ -77,7 +89,7 @@ export default class Frontpage extends Component {
 
      setTimeout(() => {
       screen.animate(left);
-     }, 800);
+     }, 650);
 
     
       
@@ -88,11 +100,16 @@ export default class Frontpage extends Component {
 
    instructions  = (e) => {
       
+    
+
       var button = this.refs.instructions;
       var screen = this.refs.instructionsscreen;
 
 
       if (e === "on") {
+
+        if (this.working === "on") {return null}
+        this.working = "on";
 
         button.animate("bounceIn");
 
@@ -107,11 +124,13 @@ export default class Frontpage extends Component {
 
         setTimeout(() => {
           screen.animate(right);
-        }, 800);
+        }, 650);
 
       }
 
       else if (e === "off") {
+
+        this.working = "off";
 
         var but = this.refs.instructionsbutton;
 
@@ -128,7 +147,7 @@ export default class Frontpage extends Component {
 
        setTimeout(() => {
         screen.animate(left);
-       }, 800);
+       }, 650);
 
       
         
@@ -140,6 +159,10 @@ export default class Frontpage extends Component {
 
    level = (e) => {
      
+    if (this.working === "on") {return null};
+
+    this.working = "on";
+
     var ref = "level"+e;
 
     var button = this.refs[ref];
@@ -158,13 +181,13 @@ export default class Frontpage extends Component {
 
     setTimeout(() => {
       screen.animate(right);
-    }, 800);
+    }, 650);
     
 
     
     setTimeout(() => {
       this.props.history.push("/thegame?"+e);
-    }, 1600);
+    }, 1550);
    }
 
 
@@ -310,7 +333,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: "absolute",
-    zIndex: 800,
+    zIndex: 1000,
     top: 0,
     right: -100+"%",
     flex: 1,
@@ -321,7 +344,7 @@ const styles = StyleSheet.create({
 
   instructionsscreen: {
     flex: 1,
-
+    padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
@@ -344,6 +367,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: -100+"%",
     backgroundColor: '#181726',
+    padding: 10,
   },
 
   welcome: {
@@ -357,7 +381,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: '#abe1fa',
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
     paddingBottom: 15,
     fontFamily: 'Archivo',
@@ -366,7 +390,7 @@ const styles = StyleSheet.create({
 
   linktext: {
     color: '#ed6062',
-    fontSize: 17,
+    fontSize: 18,
     textAlign: 'center',
     paddingBottom: 15,
     fontFamily: 'Archivo',
@@ -400,7 +424,7 @@ const styles = StyleSheet.create({
 
 
   title: {
-    marginTop: 35,
+    marginTop: 40,
     color: '#ed6062',
     fontSize: 35,
     fontWeight: 'bold',
@@ -430,14 +454,14 @@ const styles = StyleSheet.create({
 
   leveltext1: {
     fontFamily: 'Mansalva',
-    fontSize: 27,
+    fontSize: 28,
     marginBottom: 5,
     color: '#abe1fa',
   },
 
   leveltext2: {
     fontFamily: 'Archivo',
-    fontSize: 15,
+    fontSize: 18,
     color: '#ed6062'
   }
 

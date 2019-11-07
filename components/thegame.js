@@ -89,7 +89,7 @@ export default class TheGame extends Component {
   
       setTimeout(() => {
         quit.animate(right);
-      }, 800);
+      }, 650);
       
 
     }
@@ -123,7 +123,7 @@ export default class TheGame extends Component {
   
       this.props.history.push("/frontpage");
 
-    }, 800);
+    }, 650);
 
 
   }
@@ -642,10 +642,8 @@ render () {
     bannerSize="banner"
     adUnitID="ca-app-pub-3940256099942544/2934735716" 
     testDeviceID="EMULATOR"
-  //testDeviceID="8FA48CF3-6619-4304-AF22-CD6F4FFE6E0B"
-  //  testDeviceID="8fa48cf366194304af22cd6f4ffe6e0b"
 
-    servePersonalizedAds={false}
+    servePersonalizedAds={true}
     onAdViewDidReceiveAd={(e) => this.receivedAd(e)}
     onDidFailToReceiveAdWithError={(e) => this.bannerError(e)} />
     
@@ -768,6 +766,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     right: -100+"%",
+    padding: 10,
   },
 
 
@@ -783,7 +782,7 @@ const styles = StyleSheet.create({
 
   finishtext2: {
     color: '#abe1fa',
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
     paddingBottom: 15,
     fontFamily: 'Archivo',
@@ -820,6 +819,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     right: -100+"%",
+    padding: 10,
   },
 
   quitbuttons: {

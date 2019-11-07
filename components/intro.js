@@ -43,7 +43,7 @@ okButton = () => {
 
   setTimeout(() => {
     container.animate(animLeft)
-  }, 800);
+  }, 650);
 
   
 
@@ -82,8 +82,8 @@ okButton = () => {
       <Text style={styles.welcome}>Welcome!</Text>
       
 
-      <Text style={styles.introtext}>This game is meant to be played with headphones.</Text>
-      <Text style={styles.introtext}>Ads also keep this app free!</Text>
+      <Text style={styles.introtext}>Headphones are recommended.</Text>
+      <Text style={styles.introtext}>ASMR Memory Game is free because of ads!</Text>
       <Text style={styles.introtext}>Please enjoy!</Text>
       
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     zIndex: 100,
     width: '100%',
     height: '100%',
-    
+    padding: 10,
   },
 
   welcome: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
 
   introtext: {
     color: '#abe1fa',
-    fontSize: 16,
+    fontSize: 18,
     textAlign: 'center',
     paddingBottom: 15,
     fontFamily: 'Archivo',
