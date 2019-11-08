@@ -164,17 +164,14 @@ export default class TheGame extends Component {
   }
 
 
-  animate = (e, status) => {
+  animate = (button, status) => {
 
-
-    var ref = "card"+e;
-    var ref2 = "cardb"+e;
+    var ref = "card"+button;
+    var ref2 = "cardb"+button;
         
     card = this.refs[ref];
     card2 = this.refs[ref2];
 
-    card.stopAnimation();
-    card2.stopAnimation();
 
     if (status === "first") {
 
@@ -192,8 +189,9 @@ export default class TheGame extends Component {
       };
   
     card2.animate(opacity);
-    tempCard = card2;
+    
     }
+
 
     else if (status === "yes") {
       card.animate("bounceIn");
@@ -210,6 +208,7 @@ export default class TheGame extends Component {
   
     card2.animate(opacity);
     }
+
 
     else if (status === "no") {
 
@@ -230,8 +229,6 @@ export default class TheGame extends Component {
   
     card2.animate(opacity);
 
-
-    
  
     var opacity2 = {
       from: {
@@ -248,79 +245,84 @@ export default class TheGame extends Component {
     card2.animate(opacity2)
     card3.animate(opacity2)
     
+    this.setState({
+      current: []
+    })
     
     }
 
   }
 
 
-  press = (e, x) => {
+  press = (button, sound) => {
     
-  
-  this.playSound(x);
+
+
+  this.playSound(sound);
+
   this.setState({
-    last: [e,x]
+    last: [button, sound]
   })
 
-  
-  if (this.state.last[0] === e && this.state.current.length !== 0) {
+
+  for (var k in this.state.ready) {
+    
+    if (this.state.ready[k] === button) {
+      // console.log("found on ready!")
+      return null
+    }
+
+  }
+
+  if (this.state.current[0] === button && this.state.current[1] === sound) {
+    //console.log("same!")
     return null
   }
 
-  for (var k in this.state.ready) {
-    if (this.state.ready[k] === e) {
-      return null
-    }
-  }
-  
-  
   if (this.state.current.length === 0) {
-
-    this.animate(e, "first")
-    
+    //console.log("first!")
     this.setState({
-      current: [e, x]
-    })
+      current: [button, sound],
+      })
+
+    this.animate(button, "first")
+
   }
 
-  else if (this.state.current.length !== 0) {
-
-    if (this.state.current[1] === x) {
+  else if (this.state.current.length === 2) {
+   // console.log("second")
+    if (this.state.current[1] === sound) {
+     // console.log("match!")
+      var temp = [...this.state.ready, button, this.state.current[0]]
       
-      if (this.state.ready.length === 22) {
-        this.finished();
-      }
-
-      this.animate(e, "yes");
-
-      var tempArr = [...this.state.ready, e, this.state.current[0]]
+      if (temp.length === 24) {this.finished()}
 
       this.setState({
-        current: [],
-        ready: tempArr
+        ready: temp,
+        current: []
       })
-     }
-     
-     else {
-       
-       this.animate(e, "no");
-       this.setState({
-         current: [],
-         
-       })
-     }
 
+      this.animate(button, "yes")
+
+    }
+
+    else {
+     // console.log("no match!")
+      this.animate(button, "no")
+
+    }
 
   }
 
+  // current, last, ready
 
 }
+
+
+
   async componentDidMount() {
+   
     
-
- 
-
-
     await Font.loadAsync({
       'Mansalva': require('../assets/fonts/Mansalva-Regular.ttf'),
       'Archivo': require('../assets/fonts/Archivo-Regular.ttf'),
