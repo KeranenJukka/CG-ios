@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import * as Font from 'expo-font';
 
 import moon from '../assets/pictures/moon4.png'
+import moon2 from '../assets/pictures/moon5.png'
 
 import { Audio } from 'expo-av';
 
@@ -184,7 +185,7 @@ export default class TheGame extends Component {
           opacity: 0,
         },
         to: {
-          opacity: 1,
+          opacity: 0.7,
         },
       };
   
@@ -202,11 +203,31 @@ export default class TheGame extends Component {
           opacity: 0,
         },
         to: {
-          opacity: 1,
+          opacity: 0.7,
         },
       };
   
-    card2.animate(opacity);
+      var opacity2 = {
+        from: {
+          opacity: 0.7,
+        },
+        to: {
+          opacity: 0,
+        },
+      }
+
+    var ref3 = "cardb"+this.state.current[0];
+    var card3 = this.refs[ref3];
+    card2.animate(opacity2);
+    card3.animate(opacity2);
+
+    var ref4 = "cardc"+this.state.current[0];
+    var ref5 = "cardc"+ button;
+    var card4 = this.refs[ref4];
+    var card5 = this.refs[ref5];
+    card4.animate(opacity);
+    card5.animate(opacity);
+
     }
 
 
@@ -220,10 +241,10 @@ export default class TheGame extends Component {
      
       var opacity = {
         from: {
-          opacity: 1,
+          opacity: 0.7,
         },
         to: {
-          opacity: 1,
+          opacity: 0.7,
         },
       };
   
@@ -232,7 +253,7 @@ export default class TheGame extends Component {
  
     var opacity2 = {
       from: {
-        opacity: 1,
+        opacity: 0.7,
         
       },
       to: {
@@ -486,6 +507,10 @@ render () {
       </Animatable.View>
 
       <Animatable.View duration={1000} ref={"cardb"+x} style={styles.pressback}>
+      <Image style={styles.thepic} source={moon2}></Image>
+      </Animatable.View>
+
+      <Animatable.View duration={1000} ref={"cardc"+x} style={styles.pressback2}>
       <Image style={styles.thepic} source={moon}></Image>
       </Animatable.View>
 
@@ -748,13 +773,26 @@ const styles = StyleSheet.create({
     opacity: 0,
   },
 
+  pressback2: {
+    flex: 1,
+    position: "absolute",
+    top: 0,
+    
+    width: "100%",
+    height: "100%",
+    borderRadius: 5,
+    padding: 12,
+    zIndex: 40,
+    opacity: 0,
+  },
+
   thepic: {
     
     flex: 1,
     width: "100%",
     height: "100%",
     resizeMode: 'contain',
-    opacity: 0.7,
+    opacity: 1,
     
   },
 

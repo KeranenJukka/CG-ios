@@ -317,7 +317,7 @@ render () {
 
 const styles = StyleSheet.create({
   container: {
-   
+    margin: 5,
     height: "100%",
     width: "100%",
     flex: 1,
