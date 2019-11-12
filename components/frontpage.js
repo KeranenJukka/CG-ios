@@ -317,7 +317,7 @@ render () {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 5,
+    
     height: "100%",
     width: "100%",
     flex: 1,
@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     borderRadius: 5,
-    marginTop: 20
+    marginTop: 23
   },
 
   okbutton2: {
@@ -431,11 +431,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 4,
     fontFamily: 'Mansalva',
-    
+    marginLeft: 5,
+    marginRight: 5
   },
 
   levels: {
-    margin: 15,
+    marginTop: 15,
+    marginBottom: 20,
+    marginLeft: 5,
+    marginRight: 5
     
   },
 
