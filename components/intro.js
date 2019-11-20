@@ -83,7 +83,7 @@ okButton = () => {
       
 
       <Text style={styles.introtext}>Headphones are recommended.</Text>
-      <Text style={styles.introtext}>ASMR Memory Game is free because of ads!</Text>
+      <Text style={styles.introtext}>ASMR Concentration Game is free because of ads!</Text>
       <Text style={styles.introtext}>Please enjoy!</Text>
       
 

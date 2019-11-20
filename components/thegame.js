@@ -667,7 +667,7 @@ render () {
     <View style={styles.bannercont}>
     <AdMobBanner style={styles.banner}
     bannerSize="banner"
-    adUnitID="ca-app-pub-3940256099942544/2934735716" 
+    adUnitID="ca-app-pub-3052297965334900/2351095310" 
     testDeviceID="EMULATOR"
 
     servePersonalizedAds={true}

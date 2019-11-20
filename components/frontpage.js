@@ -42,7 +42,7 @@ export default class Frontpage extends Component {
 
    info = (e) => {
 
-    
+  
 
     var button = this.refs.info;
     var screen = this.refs.infoscreen;
@@ -228,8 +228,8 @@ render () {
     <Text style={styles.text}>App version: 1.0.0</Text>
     <Text style={styles.text}>Contact:</Text>
     <Text style={styles.text}>stable.software.solutions@gmail.com</Text>
-    <TouchableOpacity onPress={() => Linking.openURL('https://stablesoftwaresolutions.github.io/asmr-memory-game/')}>
-    <Text style={styles.linktext}>https://stablesoftwaresolutions.github.io/asmr-memory-game/</Text>
+    <TouchableOpacity onPress={() => Linking.openURL('https://stablesoftwaresolutions.github.io/home/asmr-concentration-game/index.html')}>
+    <Text style={styles.linktext}>https://stablesoftwaresolutions.github.io/home/asmr-concentration-game/index.html</Text>
     </TouchableOpacity>
 
     <TouchableWithoutFeedback onPress={() => this.info("off")}>
@@ -246,7 +246,7 @@ render () {
     {this.state.fontLoaded ? (
     <ScrollView style={styles.container2}>
 
-    <Text style={styles.title}>ASMR Memory Game</Text>
+    <Text style={styles.title}>ASMR Concentration Game</Text>
    
     <View style={styles.levels}>
 
@@ -436,7 +436,7 @@ const styles = StyleSheet.create({
   },
 
   levels: {
-    marginTop: 15,
+    marginTop: 12,
     marginBottom: 20,
     marginLeft: 5,
     marginRight: 5
@@ -445,28 +445,33 @@ const styles = StyleSheet.create({
 
   level: {
     
-    paddingTop: 12,
-    paddingBottom: 12,
+    paddingTop: 10,
+    paddingBottom: 10,
     borderRadius: 5,
     width: "100%",
     fontFamily: 'Archivo',
-    
     flex: 1,
     alignItems: 'center',
+
+
     
   },
 
   leveltext1: {
     fontFamily: 'Mansalva',
     fontSize: 28,
+    margin: 0,
+    padding: 0,
     marginBottom: 5,
     color: '#abe1fa',
+    
   },
 
   leveltext2: {
     fontFamily: 'Archivo',
     fontSize: 18,
-    color: '#ed6062'
+    color: '#ed6062',
+    marginBottom: 8,
   }
 
 

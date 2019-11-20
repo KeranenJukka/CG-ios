@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ASMR Memory Game",
+    "name": "ASMR Concentration Game",
     "slug": "asmr-memory-game",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
@@ -32,6 +32,6 @@
       }
     },
    
-    "description": "Relaxing memory game with ASMR sounds."
+    "description": "Relaxing matching game with ASMR sounds."
   }
 }

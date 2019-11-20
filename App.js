@@ -17,6 +17,7 @@ render() {
   return (
     <NativeRouter>
     
+    
 
     <StatusBar barStyle="light-content" />
 
@@ -42,8 +43,8 @@ render() {
 const styles = StyleSheet.create({
 
   cont: {
-    height: 896,
-    width: 504,
+    height: 760,
+    width: 427.5,
   },
 
   background: {
@@ -61,9 +62,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     zIndex: -200,
-    opacity: 1,
+    
     resizeMode: "cover",
-    opacity: 0.2,
+    opacity: 0.19,
   }
 
  })
